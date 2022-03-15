@@ -7,6 +7,50 @@ DD_MM_SLASH = '%d/%m'
 MM_YYYY_SLASH = '%m/%Y'
 DD_MM_YYYY_HH_MI_SS = '%d-%m-%Y %H:%M:%S'
 
+class Years:
+    def __init__(self):
+        year = datetime.now().year
+        month = datetime.now().month
+        self.years = []
+        if month >= 10 :
+            self.years.append(year)
+            self.years.append(year + 1)
+        if month <= 3 :
+            self.years.append(year - 1)
+            self.years.append(year)
+
+    def to_json(self):
+        return {
+                'years': self.years,
+    }
+
+class Month:
+    def __init__(self, numbermonth, month):
+        self.numbermonth = numbermonth
+        self.month = month
+
+    def to_json(self):
+        return {
+                'numbermonth': self.numbermonth,
+                'month': self.month,
+    }
+
+class Months:
+    def __init__(self):
+        self.months = []
+        self.months.append(Month(1, 'Enero'))
+        self.months.append(Month(2, 'Febrero'))
+        self.months.append(Month(3, 'Marzo'))
+        self.months.append(Month(4, 'Abril'))
+        self.months.append(Month(5, 'Mayo'))
+        self.months.append(Month(6, 'Junio'))
+        self.months.append(Month(7, 'Julio'))
+        self.months.append(Month(8, 'Agosto'))
+        self.months.append(Month(9, 'Septiembre'))
+        self.months.append(Month(10, 'Octubre'))
+        self.months.append(Month(11, 'Noviembre'))
+        self.months.append(Month(12, 'Diciembre'))
+
 class Date:
     def __init__(self, day, month, year, hour, minute, second):
         newdate = create_date_DD_MM_YYYY_HH_MI_SS_SLASH(day, month, year, hour, minute, second)
@@ -85,6 +129,7 @@ def month_of_year(number_month):
     elif number_month == 12:
         name_month_for_year = "Diciembre"
     return name_month_for_year
+
 
 def text_to_date(text_date, format):
     newdate = datetime.strptime(text_date, format)

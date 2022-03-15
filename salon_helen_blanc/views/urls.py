@@ -18,6 +18,8 @@ from django.urls import path
 from salon_helen_blanc.views.index import index
 from salon_helen_blanc.views.home import home
 from salon_helen_blanc.views.calendar import load_calendar
+from salon_helen_blanc.views.picture import picture
+from salon_helen_blanc.views.contact import contact
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
@@ -25,5 +27,6 @@ urlpatterns = [
     path('home.html', home, name="home"),
     path('index.html', index, name="index"),
     path('calendar.html', load_calendar, name="calendar"),
-
+    path('picture.html', picture, name="picture"),
+    path('contact.html', contact, name="contact"),    
 ]
